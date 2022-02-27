@@ -1,3 +1,6 @@
+.wrapper {
+  overflow: hidden;
+}
 /* Header */
 .header {
   height: var(--header-height);
@@ -400,8 +403,28 @@
   align-items: center;
   margin: 0 8px;
 }
+.header__mobile-search {
+  padding: 0 12px;
+  display: none;
+}
+.header__mobile-search svg {
+  width: 30px;
+  fill: var(--white);
+}
+.header__mobile-menu {
+  width: 30px;
+  fill: var(--white);
+  display: none;
+}
 .header__logo {
   width: 200px;
+}
+.header__logo-link {
+  display: block;
+  line-height: 0;
+}
+.header__search-checkbox:checked ~ .header__search {
+  display: flex;
 }
 .header__logo-img {
   width: 150px;
@@ -594,7 +617,7 @@
 }
 .header__cart-list-item {
   list-style: none;
-  height: 40vh;
+  max-height: 40vh;
   overflow-y: auto;
 }
 .header__cart-item {
@@ -640,6 +663,7 @@
 .header__cart-item-body {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .header__cart-item-desc {
   color: #757575;
@@ -712,6 +736,46 @@
 .header__cart-list--no-cart .header__cart-list-no-cart-msg {
   display: block;
 }
+/* Header sort bar */
+.header__sort-bar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: var(--header-sort-bar-height);
+  background-color: var(--white);
+  list-style: none;
+  border-top: 2px solid #eee;
+  border-bottom: 2px solid #eee;
+  display: none;
+}
+.header__sort-item {
+  flex: 1;
+}
+.header__sort-link {
+  color: var(--text-color);
+  font-size: 1.7rem;
+  display: block;
+  height: 100%;
+  line-height: var(--header-sort-bar-height);
+  text-align: center;
+  position: relative;
+}
+.header__sort-link.active {
+  color: var(--primary);
+}
+.header__sort-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 60%;
+  border-left: 2px solid #eee;
+  transform: translateY(-50%);
+}
+.header__sort-item:first-child .header__sort-link::before {
+  display: none;
+}
 /* Container */
 .container {
   background-color: #f5f5f5;
@@ -765,6 +829,53 @@
   color: var(--primary);
   right: -6px;
 }
+/* Mobile category */
+.mobile-category {
+  display: none;
+}
+.mobile-category__list {
+  display: flex;
+  list-style: none;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.mobile-category__list::-webkit-scrollbar {
+  display: none;
+}
+.mobile-category__item {
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category__link {
+  background-color: #87afd8;
+}
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category__link {
+  background-color: #76c9bd;
+}
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category__link {
+  background-color: #88cf81;
+}
+.mobile-category__link {
+  --line-height: 4rem;
+  font-weight: 300;
+  color: var(--white);
+  font-size: 1.6rem;
+  text-align: center;
+  width: 110px;
+  height: var(--line-height);
+  display: block;
+  display: -webkit-box;
+  border-radius: 8px;
+  line-height: var(--line-height);
+  padding: 0 5px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+/* Home Filter */
 .home-filter {
   display: flex;
   align-items: center;
@@ -985,6 +1096,7 @@
 .home-product__pagination {
   margin-top: 48px;
   margin-bottom: 32px;
+  padding-left: 0;
 }
 /* Footer */
 .footer {
@@ -992,7 +1104,7 @@
   padding-top: 36px;
 }
 .footer__heading {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   text-transform: uppercase;
   color: var(--text-color);
   margin-bottom: 20px;
