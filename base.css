@@ -10,6 +10,10 @@
   --header-with-search-height: calc(
     var(--header-height) - var(--navbar-height)
   );
+  --header-sort-bar-height: 50px;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 /* Custom scrollbar */
 body::-webkit-scrollbar {
